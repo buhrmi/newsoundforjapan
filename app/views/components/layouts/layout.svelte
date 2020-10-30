@@ -19,7 +19,7 @@
   <slot />
 
   <footer>
-    Copyright 2020 New Sound For Japan K.K.
+    Copyright 2020 New Sound For Japan K.K. | <a use:inertia href="/privacy_policy">Privacy Policy</a>
   </footer>
 </div>
 

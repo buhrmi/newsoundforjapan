@@ -11,17 +11,14 @@ class UsersController < ApplicationController
       @title_object = user = current_user
     end
 
-    if user.google_calendar_id
-      service = user.google_calendar_service
-      response = service.list_events(user.google_calendar_id,
-                                    max_results:   10,
-                                    single_events: true,
-                                    order_by:      "startTime",
-                                    time_min:      DateTime.now.rfc3339)
-      gigs = response.items
-    else
-      gigs = []
-    end
+    service = user.google_calendar_service
+    response = service.list_events(user.google_calendar_id || 'primary',
+                                  max_results:   10,
+                                  single_events: true,
+                                  order_by:      "startTime",
+                                  time_min:      DateTime.now.rfc3339)
+    gigs = response.items
+
     render inertia: 'users/show', props: {
       user: user.to_prop,
       gigs: gigs
