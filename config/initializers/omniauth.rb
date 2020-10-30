@@ -8,6 +8,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     "https://www.googleapis.com/auth/calendar.readonly"
   ]
   provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
-    scope: scopes.join(" "), access_type: 'offline',  prompt: 'consent'
+    scope: scopes.join(" "), access_type: 'offline'
   }
 end
