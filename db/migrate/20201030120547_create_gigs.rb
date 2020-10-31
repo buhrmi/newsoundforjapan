@@ -14,7 +14,7 @@ class CreateGigs < ActiveRecord::Migration[6.0]
 
       t.index :external_id
       t.index :event_id
-      t.index :artist_id
+      t.index :talent_id
       t.index :start_at
 
       t.timestamps
