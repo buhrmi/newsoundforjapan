@@ -27,6 +27,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'google-api-client'
+gem 'icalendar'
 # This is used to compile character functions (eg regeneration time etc) to javascript and make them
 # available client-side
 #gem 'ruby2js'

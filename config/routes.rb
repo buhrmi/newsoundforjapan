@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  # namespace :admin do
-  #   resources :users
-  #   resources :pages
-    
-  #   root to: "users#index"
-  # end
+  resources :events
+  resources :gigs
+  namespace :admin do
+    resources :users
+
+    root to: "users#index"
+  end
   
   resource :session
   
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
    
     get '/(:slug)', to: 'slugs#show'
-    get '/djs/(:name)', to: 'users#show'
+    get '/talents/(:name)', to: 'users#show'
   end
   resources :users
   

@@ -5,17 +5,17 @@ import { stringify } from 'querystring'
 
 export let user
 export let gigs
-
-function pickCalendar(calendar) {
-  Inertia.reload({method: 'PUT', data: {user: {google_calendar_id: calendar.id}}})
+let icsURL
+function saveICS() {
+  Inertia.reload({method: 'PUT', data: {user: {ics_url: icsURL}}})
 }
 </script>
 
 
-{#if $page.current_user && $page.current_user.id == user.id && !$page.current_user.google_calendar_id}
-  Please pick the Google Calendar you use to manage your gigs<br>
+{#if $page.current_user && $page.current_user.id == user.id && !$page.current_user.ics_url}
+  Please enter the URL to your Google Calendar .ics file to add your gigs
   {#each $page.current_user.calendars as calendar}
-    <button on:click={() => pickCalendar(calendar)}>{calendar.summary}</button><br>
+    <input type="text" bind:value={icsURL}><button on:click={saveICS}>Submit</button><br>
   {/each}
 {:else}
   <h2>{user.name}</h2>
@@ -25,7 +25,7 @@ function pickCalendar(calendar) {
     {#each gigs as gig}
       <div class="gig">
         {gig.summary}<br>
-        {gig.start.date || gig.start.date_time}
+        {gig.start_at}
       </div>
     {/each}
   {:else}
@@ -35,7 +35,7 @@ function pickCalendar(calendar) {
 
 <style>
 .gig {
-  border: 1px solid #ddd;
+  border: 1px solid #444;
   padding: 15px;
   margin-bottom: 12px;
 }

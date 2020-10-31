@@ -1,6 +1,3 @@
-require 'google/apis/calendar_v3'
-require 'google/api_client/client_secrets.rb'
-
 class UsersController < ApplicationController
   def show
     if params[:name]
@@ -10,18 +7,11 @@ class UsersController < ApplicationController
     else
       @title_object = user = current_user
     end
-
-    service = user.google_calendar_service
-    response = service.list_events(user.google_calendar_id || 'primary',
-                                  max_results:   10,
-                                  single_events: true,
-                                  order_by:      "startTime",
-                                  time_min:      DateTime.now.rfc3339)
-    gigs = response.items
-
+    user.fetch_gigs_from_ics!
+    
     render inertia: 'users/show', props: {
       user: user.to_prop,
-      gigs: gigs
+      gigs: user.gigs
     }
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_114925) do
+ActiveRecord::Schema.define(version: 2020_10_31_031716) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,29 @@ ActiveRecord::Schema.define(version: 2020_08_21_114925) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer "location_id"
+    t.datetime "start_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "gigs", force: :cascade do |t|
+    t.string "external_id"
+    t.string "summary"
+    t.integer "event_id"
+    t.integer "talent_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean "featured"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"artist_id\"", name: "index_gigs_on_artist_id"
+    t.index ["event_id"], name: "index_gigs_on_event_id"
+    t.index ["external_id"], name: "index_gigs_on_external_id"
+    t.index ["start_at"], name: "index_gigs_on_start_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -42,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_114925) do
     t.string "google_expires_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ics_url"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

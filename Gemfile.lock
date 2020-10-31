@@ -139,6 +139,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    icalendar (2.7.0)
+      ice_cube (~> 0.16)
+    ice_cube (0.16.3)
     inertia_rails (1.4.1)
       rails (>= 5)
     jmespath (1.4.0)
@@ -314,6 +317,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   dotenv-rails
   google-api-client
+  icalendar
   inertia_rails
   listen (~> 3.2)
   mini_magick

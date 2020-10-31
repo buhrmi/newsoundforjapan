@@ -1,7 +1,10 @@
 require 'open-uri'
+require 'google/apis/calendar_v3'
+require 'google/api_client/client_secrets.rb'
 
 class User < ApplicationRecord
   has_one_attached :profile_image
+  has_many :gigs, foreign_key: 'talent_id'
 
   after_save_commit :broadcast_changes
 
@@ -19,6 +22,25 @@ class User < ApplicationRecord
         u.profile_image.attach(io: image, filename: url.split('/').last)
       end
       u.save
+    end
+  end
+
+  def fetch_gigs_from_ics!
+    return unless ics_url
+    ics = open ics_url
+    
+    cals = Icalendar::Calendar.parse(ics)
+    cal = cals.first
+    
+    for cal_event in cal.events
+      start_at = cal_event.dtstart.to_time
+      next if start_at < Time.now
+      Gig.where(external_id: cal_event.uid.to_s).first_or_create(
+        summary: cal_event.summary,
+        talent_id: self.id,
+        start_at: start_at,
+        end_at: cal_event.dtend.to_time
+      )
     end
   end
 

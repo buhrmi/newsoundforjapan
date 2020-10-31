@@ -10,11 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    nickname: Field::String,
-    email: Field::String,
-    description: Field::String,
-    twitch_id: Field::String,
-    view_count: Field::Number,
+    ics_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -27,8 +23,6 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   name
-  nickname
-  email
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,11 +30,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   name
-  nickname
-  email
-  description
-  twitch_id
-  view_count
+  ics_url
   created_at
   updated_at
   ].freeze
@@ -50,11 +40,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   name
-  nickname
-  email
-  description
-  twitch_id
-  view_count
+  ics_url
   ].freeze
 
   # COLLECTION_FILTERS

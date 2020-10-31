@@ -3,7 +3,7 @@
 </script>
 
 {#if !$page.current_user} 
-  <p>New Sound For Japan automatically promotes gigs from your Google Calendar</p>
+  <p>We automatically promote gigs from your Google Calendar</p>
   <a href="/auth/google_oauth2">Connect a Google Calendar</a> 
 {/if}
 
