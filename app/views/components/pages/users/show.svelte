@@ -1,5 +1,5 @@
 <script>
-  import Gig from 'components/gig.svelte'
+import Gig from 'components/gig.svelte'
 import { Inertia } from '@inertiajs/inertia'
 import { page } from 'inertia-svelte'
 import { stringify } from 'querystring'

@@ -1,10 +1,11 @@
 <script>
+import formatTime from 'format_time'
 export let gig
 </script>
 
 <div class="gig">
   {gig.summary}<br>
-  {gig.start_at}
+  {formatTime(gig.start_at)}
 </div>
 
 <style>

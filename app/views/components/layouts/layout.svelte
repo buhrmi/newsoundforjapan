@@ -4,7 +4,9 @@
 </script>
 
 <div class="container">
-  <img class="logo" src={require('images/logo.png').default}/>
+  <a use:inertia href="/">
+    <img class="logo" src={require('images/logo.png').default}/>
+  </a>
   
   {#if $currentUser}
     <div>
@@ -19,13 +21,16 @@
   <slot />
 
   <footer>
+    All times are displayed in Asia/Tokyo<br>
     Copyright 2020 New Sound For Japan K.K. | <a use:inertia href="/privacy_policy">Privacy Policy</a>
   </footer>
 </div>
 
 <style>
 .logo {
-  width: 200px;
+  margin-top: 40px;
+  width: 460px;
+  max-width: 100%;
 }
 .logout {
   position: absolute;
