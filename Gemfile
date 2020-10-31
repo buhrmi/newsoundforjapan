@@ -28,6 +28,9 @@ gem 'omniauth-twitch'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'google-api-client'
+
+# google-api-client does not include places support. use another gem for that
+gem 'google_places'
 gem 'icalendar'
 # This is used to compile character functions (eg regeneration time etc) to javascript and make them
 # available client-side

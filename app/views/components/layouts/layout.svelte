@@ -20,8 +20,8 @@
   <slot />
 
   <footer>
-    All times are in Asia/Tokyo<br><br>
-    Copyright 2020 New Sound For Japan K.K. | <a use:inertia href="/privacy_policy">Privacy Policy</a> | <a use:inertia href="/users/new">Join us</a>
+    All times are in JST (Asia/Tokyo)<br><br>
+    Copyright © 2020 NEW SOUND FOR JAPAN K.K., All Rights Reserved | <a use:inertia href="/privacy_policy">Privacy Policy</a>
     
   </footer>
 </div>

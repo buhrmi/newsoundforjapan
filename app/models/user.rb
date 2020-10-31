@@ -58,6 +58,7 @@ class User < ApplicationRecord
       start_at = cal_event.dtstart.to_time
       next if start_at < Time.now
       gig = Gig.where(external_id: cal_event.uid.to_s).first_or_create
+      gig.place = Place.from_event_location(cal_event.location)
       gig.summary =  cal_event.summary
       gig.talent_id = self.id
       gig.start_at = start_at
