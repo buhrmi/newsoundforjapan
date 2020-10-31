@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     display_name: Field::String,
+    description: Field::String,
     ics_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -24,6 +25,7 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   name
+  display_name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -31,6 +33,8 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   name
+  display_name
+  description
   ics_url
   created_at
   updated_at
@@ -41,6 +45,8 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   name
+  display_name
+  description
   ics_url
   ].freeze
 

@@ -43,23 +43,29 @@ class User < ApplicationRecord
     user
   end
 
-  def fetch_gigs_from_ics!
+
+
+  def sync_gigs_with_ics!
     return unless ics_url
     ics = open ics_url
     
     cals = Icalendar::Calendar.parse(ics)
     cal = cals.first
+
+    maybe_deleted_external_ids = gigs.pluck :external_id    
     
     for cal_event in cal.events
       start_at = cal_event.dtstart.to_time
       next if start_at < Time.now
-      Gig.where(external_id: cal_event.uid.to_s).first_or_create(
-        summary: cal_event.summary,
-        talent_id: self.id,
-        start_at: start_at,
-        end_at: cal_event.dtend.to_time
-      )
+      gig = Gig.where(external_id: cal_event.uid.to_s).first_or_create
+      gig.summary =  cal_event.summary
+      gig.talent_id = self.id
+      gig.start_at = start_at
+      gig.end_at = cal_event.dtend.to_time
+      gig.save!
+      maybe_deleted_external_ids.delete cal_event.uid.to_s
     end
+    Gig.where(external_id: maybe_deleted_external_ids).delete_all
   end
 
   def profile_image_thumbnail
@@ -89,6 +95,8 @@ class User < ApplicationRecord
     prop = {
       id: id,
       name: name,
+      display_name: display_name,
+      description: description,
       profile_image: profile_image_thumbnail,
       url: Rails.application.routes.url_helpers.user_url(self, only_path: true)
     }

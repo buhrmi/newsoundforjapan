@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     else
       @title_object = user = current_user
     end
-    user.fetch_gigs_from_ics!
+    user.sync_gigs_with_ics!
     
     render inertia: 'users/show', props: {
       user: user.to_prop,

@@ -3,10 +3,12 @@ import formatTime from 'format_time'
 export let gig
 </script>
 
-<div class="gig">
-  {gig.summary}<br>
-  {formatTime(gig.start_at)}
-</div>
+<a href="/users/{gig.talent_id}">
+  <div class="gig">
+    {gig.summary}<br>
+    {formatTime(gig.start_at)}
+  </div>
+</a>
 
 <style>
   .gig {
