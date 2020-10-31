@@ -1,4 +1,5 @@
 <script>
+  import Gig from 'components/gig.svelte'
 import { Inertia } from '@inertiajs/inertia'
 import { page } from 'inertia-svelte'
 import { stringify } from 'querystring'
@@ -19,14 +20,11 @@ function saveICS() {
   {/each}
 {:else}
   <h2>{user.name}</h2>
-  <h3>Upcoming Gigs</h3>
+  <h3>Upcoming Shows</h3>
 
   {#if gigs}
     {#each gigs as gig}
-      <div class="gig">
-        {gig.summary}<br>
-        {gig.start_at}
-      </div>
+      <Gig {gig} />
     {/each}
   {:else}
     No upcoming gigs.
@@ -34,10 +32,5 @@ function saveICS() {
 {/if}
 
 <style>
-.gig {
-  border: 1px solid #444;
-  padding: 15px;
-  margin-bottom: 12px;
-}
 
 </style>

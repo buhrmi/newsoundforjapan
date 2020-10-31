@@ -1,8 +1,12 @@
 <script>
+import Gig from 'components/gig.svelte'
 export let upcoming
 
 </script>
 
-<h1>Upcoming Gigs</h1>
+<h1>Upcoming Shows</h1>
 
-{JSON.stringify(upcoming)}
+{#each upcoming as gig}
+  <Gig {gig} />
+{/each}
+

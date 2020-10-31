@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   end
   resources :users
   
-  root to: 'users#new'
+  root to: 'gigs#index'
 end
