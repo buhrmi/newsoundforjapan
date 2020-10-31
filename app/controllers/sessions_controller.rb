@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.from_google(auth_hash)
+    user = User.from_twitch(auth_hash)
     cookies.signed[:user_id] = user.id
     
     redirect_to current_user

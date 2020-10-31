@@ -10,6 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    display_name: Field::String,
     ics_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

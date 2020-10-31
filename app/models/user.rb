@@ -25,6 +25,24 @@ class User < ApplicationRecord
     end
   end
 
+  def self.from_twitch auth_hash
+    
+    user = User.where(twitch_id: auth_hash[:uid]).first_or_create
+    
+    if auth_hash['info']['image']
+      image = open auth_hash['info']['image']
+      user.profile_image.attach(io: image, filename: "avatar.jpg")
+    end
+    
+    user.update!(
+      name: auth_hash['info']['name'],
+      email: auth_hash['info']['email'],
+      display_name: auth_hash['info']['nickname'],
+      description: auth_hash['info']['description']
+    )
+    user
+  end
+
   def fetch_gigs_from_ics!
     return unless ics_url
     ics = open ics_url
@@ -50,21 +68,21 @@ class User < ApplicationRecord
     end
   end
 
-  def google_calendar_service
-    secrets = Google::APIClient::ClientSecrets.new(
-      { "web" => 
-        { "access_token" => google_access_token, 
-          "refresh_token" => google_refresh_token, 
-          "client_id" => ENV.fetch('GOOGLE_CLIENT_ID'), 
-          "client_secret" => ENV.fetch('GOOGLE_CLIENT_SECRET')
-        }
-      }
-    )
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = secrets.to_authorization
-    service.authorization.refresh!
-    service
-  end
+  # def google_calendar_service
+  #   secrets = Google::APIClient::ClientSecrets.new(
+  #     { "web" => 
+  #       { "access_token" => google_access_token, 
+  #         "refresh_token" => google_refresh_token, 
+  #         "client_id" => ENV.fetch('GOOGLE_CLIENT_ID'), 
+  #         "client_secret" => ENV.fetch('GOOGLE_CLIENT_SECRET')
+  #       }
+  #     }
+  #   )
+  #   service = Google::Apis::CalendarV3::CalendarService.new
+  #   service.authorization = secrets.to_authorization
+  #   service.authorization.refresh!
+  #   service
+  # end
 
   def to_prop(incl_private=false)
   
@@ -76,15 +94,9 @@ class User < ApplicationRecord
     }
     if incl_private
       prop[:email] = email
-      prop[:calendars] = calendars
-      prop[:google_calendar_id] = google_calendar_id
+      prop[:ics_url] = ics_url
     end
     prop
   end
-
-  def calendars
-    google_calendar_service.list_calendar_lists.items
-  end
-
 
 end

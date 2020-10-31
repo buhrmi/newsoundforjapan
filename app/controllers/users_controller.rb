@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     head 403 unless user == current_user
-    user.google_calendar_id = params[:user][:google_calendar_id]
+    user.ics_url = params[:user][:ics_url]
     user.save
     redirect_to user
   end

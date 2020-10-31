@@ -4,9 +4,11 @@
 </script>
 
 <div class="container">
-  <a use:inertia href="/">
-    <img class="logo" src={require('images/logo.png').default}/>
-  </a>
+  <header>
+    <a use:inertia href="/">
+      <img class="logo" src={require('images/logo.png').default}/>
+    </a>
+  </header>
   
   {#if $currentUser}
     <div>
@@ -21,8 +23,10 @@
   <slot />
 
   <footer>
-    All times are displayed in Asia/Tokyo<br>
-    Copyright 2020 New Sound For Japan K.K. | <a use:inertia href="/privacy_policy">Privacy Policy</a>
+    All times are in Asia/Tokyo<br><br>
+    New Sound For Japan is a collective of Twitch streamers and DJs united by one goal:<br>
+    Discover the ultimate sound and bring it to Japan.<br><br>
+    Copyright 2020 New Sound For Japan K.K. | <a use:inertia href="/privacy_policy">Privacy Policy</a> | <a use:inertia href="/users/new">Join as Streamer</a>
   </footer>
 </div>
 

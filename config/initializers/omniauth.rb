@@ -1,4 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :twitch, ENV["TWITCH_CLIENT_ID"], ENV["TWITCH_CLIENT_SECRET"]
+  
   scopes = [
     # we need the profile scope in order to login
     "https://www.googleapis.com/auth/userinfo.profile",

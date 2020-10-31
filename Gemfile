@@ -24,6 +24,7 @@ gem 'webpacker', '~> 4.0'
 gem 'inertia_rails'
 gem "administrate"
 gem 'omniauth'
+gem 'omniauth-twitch'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'google-api-client'

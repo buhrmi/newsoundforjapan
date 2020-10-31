@@ -18,6 +18,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: #b54575;
+}
+
 body {
   color: #f4f4f4;
   background-color: #212122;
