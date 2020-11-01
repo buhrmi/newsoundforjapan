@@ -10,10 +10,24 @@
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
     <% if @title_object %>
-      <title><%= @title_object.name %> | New Sound For Japan</title>
+      <title><%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan</title>
+      <meta name="twitter:title" content="<%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan" />
+      <meta property="og:title" content="<%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan" />
+      <% if @title_object.respond_to? :description %>
+        <meta name="twitter:description" content="<%= @title_object.description %>">
+        <meta property="og:description" content="<%= @title_object.description %>">
+      <% end %>
+      <% if @title_object.respond_to? :profile_image %>
+        <meta name="twitter:image" content="<%= @title_object.profile_image_thumbnail %>">
+        <meta property="og:image" content="<%= @title_object.profile_image_thumbnail %>">
+      <% end %>
     <% else %>
       <title>New Sound For Japan</title>
+      <meta name="twitter:title" content="New Sound For Japan">
     <% end %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@newsoundforjpn">
+    <meta name="twitter:site" content="@newsoundforjpn">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
