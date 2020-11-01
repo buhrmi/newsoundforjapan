@@ -9,9 +9,12 @@ export let past
 <div class="gigs flex">
   {#each upcoming as gig}
     <Gig {gig} />
-  {:else}
-    Nothing planned. Please check back later
   {/each}
+  <div class="item-6 md:item-4">
+    <div class="soon">
+      Coming soon
+    </div>
+  </div>
 </div>
 
 <h1>Past</h1>
@@ -21,3 +24,17 @@ export let past
 {:else}
   Nothing in the past.
 {/each}
+
+<style>
+.gigs {
+}
+.soon {
+  padding-top: 50%;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #888;
+  border: 3px dashed rgba(0,0,0,0.3);
+}
+
+</style>

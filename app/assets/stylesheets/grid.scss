@@ -14,7 +14,7 @@ $margin: 16px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 (-$margin/2);
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 .flex.reverse {
   flex-wrap: wrap-reverse;
