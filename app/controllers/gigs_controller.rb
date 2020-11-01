@@ -1,6 +1,7 @@
 class GigsController < ApplicationController
   def create
     return redirect_to '/auth/twitter' unless current_user
+    
     gigs_on_this_day = current_user.gigs.on_that_day(Time.parse(create_params[:start_at]))
     if gigs_on_this_day.empty?
       gig = Gig.create(create_params.merge talent: current_user)

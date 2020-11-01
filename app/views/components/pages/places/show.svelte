@@ -1,5 +1,5 @@
 <script>
-import { inertia } from 'inertia-svelte'
+import { inertia, page } from 'inertia-svelte'
 import formatTime from 'format_time'
 export let place
 export let gigs
@@ -22,6 +22,32 @@ export let current_user_gig
     Nothing seems to be happening.
   {/each}
   {#if !current_user_gig}
-    Do you want to play on this day? You can <a use:inertia={{method: 'POST', data: {gig: {place_id: place.id, start_at: start_at}}}} href="/gigs">add yourself to the lineup</a>.
+    <div class="join">
+      Do you want to play at this event?<br>
+    
+      {#if $page.current_user}
+        <a use:inertia={{method: 'POST', data: {gig: {place_id: place.id, start_at: start_at}}}} href="/gigs" class="btn-big">
+          <span class="sc-text">
+            Reserve a DJ slot
+          </span> 
+        </a>
+      {:else}
+        <a href="/auth/twitter" class="sc-btn sc--round sc--twitter">
+          <span class="sc-text">
+            Reserve a DJ slot
+          </span> 
+        </a>
+      {/if}
+    </div>
   {/if}
 </div>
+
+<style>
+
+  .join {margin-top: 50px;
+    text-align: center;
+  }
+  .join .btn-big {
+    margin-top: 12px;
+  }
+</style>
