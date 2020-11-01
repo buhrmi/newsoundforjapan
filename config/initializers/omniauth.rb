@@ -1,5 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :twitch, ENV["TWITCH_CLIENT_ID"], ENV["TWITCH_CLIENT_SECRET"]
+  provider :twitter, ENV["TWITTER_CLIENT"], ENV["TWITTER_SECRET"]
   
   scopes = [
     # we need the profile scope in order to login

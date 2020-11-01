@@ -1,10 +1,11 @@
 <script>
+import { inertia } from 'inertia-svelte'
 import formatTime from 'format_time'
 export let gig
 </script>
 
 <div class="gig item-6 md:item-4">
-  <a href="/users/{gig.talent.id}">
+  <a use:inertia href="/places/{gig.place.id}?start_at={gig.start_at}">
     <div class="time">
       {formatTime(gig.start_at)}
     </div>

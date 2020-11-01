@@ -24,6 +24,7 @@ gem 'webpacker', '~> 4.0'
 gem 'inertia_rails'
 gem "administrate"
 gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'omniauth-twitch'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', groups: [:development, :test]
@@ -49,7 +50,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  
+  gem 'annotate'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
 end
