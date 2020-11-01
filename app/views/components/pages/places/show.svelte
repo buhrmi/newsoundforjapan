@@ -32,7 +32,7 @@ export let current_user_gig
           </span> 
         </a>
       {:else}
-        <a href="/auth/twitter" class="sc-btn sc--round sc--twitter">
+        <a href="/auth/twitter" class="btn-big">
           <span class="sc-text">
             Reserve a DJ slot
           </span> 
