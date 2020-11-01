@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_112517) do
+ActiveRecord::Schema.define(version: 2020_11_01_113934) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_112517) do
     t.string "twitch_id"
     t.string "display_name"
     t.string "description"
+    t.boolean "admin"
     t.index ["twitch_id"], name: "index_users_on_twitch_id"
   end
 
