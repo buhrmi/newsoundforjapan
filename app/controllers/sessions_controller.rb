@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def create
-    user = User.from_twitch(auth_hash)
+    if auth_hash.provider == 'twitter'
+      user = User.from_twitter(auth_hash, current_user)
+    else
+      user = User.from_twitch(auth_hash)
+    end
     cookies.signed[:user_id] = user.id
     
     redirect_to current_user

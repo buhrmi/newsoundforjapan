@@ -25,6 +25,25 @@ class User < ApplicationRecord
     end
   end
 
+  def self.from_twitter auth_hash, current_user
+
+    user = current_user || User.where(twitter_id: auth_hash[:uid]).first_or_create
+    
+    if auth_hash['info']['image'] && !user.profile_image.attached?
+      image = open auth_hash['info']['image']
+      user.profile_image.attach(io: image, filename: "avatar.jpg")
+    end
+    
+    user.name ||= auth_hash['info']['nickname']
+    user.twitter_id = auth_hash[:uid]
+    user.twitter_name = auth_hash['info']['nickname']
+    user.email = auth_hash['info']['email']
+    user.description ||= auth_hash['info']['description']
+    user.display_name ||= auth_hash['info']['name']
+    user.save
+    user
+  end
+
   def self.from_twitch auth_hash
     
     user = User.where(twitch_id: auth_hash[:uid]).first_or_create

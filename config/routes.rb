@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   
   resources :places
-  
+  resources :gigs
   resource :session
   
   get '/auth/:provider/callback', to: 'sessions#create'

@@ -17,11 +17,13 @@ export let gig
         {gig.talent.display_name}
       </div>
       <div class="place">
-        {gig.place.name}
+        @ {gig.place.name}
       </div>
-      <div class="summary">
-        {gig.summary}
-      </div>
+      {#if gig.summary}
+        <div class="summary">
+          {gig.summary}
+        </div>
+      {/if}
     </div>
   </a>
 </div>

@@ -4,6 +4,7 @@ import formatTime from 'format_time'
 export let place
 export let gigs
 export let start_at
+export let current_user_gig
 </script>
 
 <h1>{place.name}</h1>
@@ -20,6 +21,7 @@ export let start_at
   {:else}
     Nothing seems to be happening.
   {/each}
-
-  ... and more.
+  {#if !current_user_gig}
+    Do you want to play on this day? You can <a use:inertia={{method: 'POST', data: {gig: {place_id: place.id, start_at: start_at}}}} href="/gigs">add yourself to the lineup</a>.
+  {/if}
 </div>
