@@ -4,6 +4,22 @@ class Place < ApplicationRecord
   has_many :gigs
   @google_client = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
       
+  def profile_image_thumbnail
+    if profile_image.attached?
+      Rails.application.routes.url_helpers.rails_representation_url profile_image.variant(resize: '800x800'), only_path: true
+    end
+  end
+
+  def to_prop(incl_private=false)
+    {
+      id: id,
+      name: name,
+      profile_image: profile_image_thumbnail,
+      url: Rails.application.routes.url_helpers.place_url(self, only_path: true)
+    }
+  end
+
+
   def self.from_event_location(location)
     return nil unless location.to_s.present?
     place = Place.where(address: location.to_s).first

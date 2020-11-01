@@ -43,7 +43,7 @@ footer {
   padding-top: 10px;
   border-top: 1px solid black;
 }
-.container {
+/* .container {
   position: relative;
   margin: 0 auto;
   width: 100%;
@@ -53,6 +53,6 @@ footer {
     margin: 0 auto;
     width: 1022px;
   }
-}
+} */
 
 </style>

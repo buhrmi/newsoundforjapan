@@ -4,18 +4,20 @@ export let upcoming
 export let past
 </script>
 
-<h1>Upcoming Shows</h1>
+<h1>Coming up</h1>
 
-{#each upcoming as gig}
-  <Gig {gig} />
-{:else}
-  No upcoming shows. Please check back later
-{/each}
+<div class="gigs flex">
+  {#each upcoming as gig}
+    <Gig {gig} />
+  {:else}
+    Nothing planned. Please check back later
+  {/each}
+</div>
 
-<h2>Past Shows</h2>
+<h1>Past</h1>
 
 {#each past as gig}
   <Gig {gig} />
 {:else}
-  No past shows
+  Nothing in the past.
 {/each}

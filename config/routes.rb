@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :places
-  resources :events
-  resources :gigs
   namespace :admin do
+    resources :places
+    resources :gigs
     resources :users
 
     root to: "users#index"
   end
+  
+  resources :places
   
   resource :session
   

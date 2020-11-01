@@ -8,4 +8,14 @@ class Gig < ApplicationRecord
       
     )
   end
+
+  def to_prop
+    {
+      id: id,
+      start_at: start_at,
+      summary: summary,
+      talent: talent.to_prop,
+      place: place.to_prop
+    }
+  end
 end

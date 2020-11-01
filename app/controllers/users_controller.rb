@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     
     render inertia: 'users/show', props: {
       user: user.to_prop,
-      gigs: user.gigs
+      gigs: user.gigs.map(&:to_prop)
     }
   end
 

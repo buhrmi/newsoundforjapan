@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class UserDashboard < Administrate::BaseDashboard
+class GigDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,12 +8,16 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    talent: Field::BelongsTo.with_options(class_name: "User"),
+    place: Field::BelongsTo,
     id: Field::Number,
-    name: Field::String,
-    display_name: Field::String,
-    description: Field::String,
-    gigs: Field::HasMany,
-    ics_url: Field::String,
+    external_id: Field::String,
+    summary: Field::String,
+    event_id: Field::Number,
+    talent_id: Field::Number,
+    start_at: Field::DateTime,
+    end_at: Field::DateTime,
+    featured: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -24,20 +28,25 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
+  talent
+  place
   id
-  name
-  display_name
+  external_id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
+  talent
+  place
   id
-  name
-  display_name
-  gigs
-  description
-  ics_url
+  external_id
+  summary
+  event_id
+  talent_id
+  start_at
+  end_at
+  featured
   created_at
   updated_at
   ].freeze
@@ -46,10 +55,15 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  name
-  display_name
-  description
-  ics_url
+  talent
+  place
+  external_id
+  summary
+  event_id
+  talent_id
+  start_at
+  end_at
+  featured
   ].freeze
 
   # COLLECTION_FILTERS
@@ -64,10 +78,10 @@ class UserDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how users are displayed
+  # Overwrite this method to customize how gigs are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
+  # def display_resource(gig)
+  #   "Gig ##{gig.id}"
   # end
 end

@@ -1,0 +1,25 @@
+@import "grid";
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #df508e;
+}
+
+
+body {
+  color: #f4f4f4;
+  background-color: #212122;
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-family: 'Sansita Swashed', cursive;
+}
+
+h1 span {
+  font-family: 'Lato', sans-serif;
+}

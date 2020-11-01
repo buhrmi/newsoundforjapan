@@ -71,7 +71,7 @@ class User < ApplicationRecord
 
   def profile_image_thumbnail
     if profile_image.attached?
-      Rails.application.routes.url_helpers.rails_representation_url profile_image.variant(resize: '100x100'), only_path: true
+      Rails.application.routes.url_helpers.rails_representation_url profile_image.variant(resize: '400x400'), only_path: true
     end
   end
 
@@ -92,7 +92,6 @@ class User < ApplicationRecord
   # end
 
   def to_prop(incl_private=false)
-  
     prop = {
       id: id,
       name: name,

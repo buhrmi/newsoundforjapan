@@ -38,11 +38,13 @@ onMount(function() {
   <div id="twitch"><div id="embed"></div></div>
   <h3>Upcoming Shows</h3>
 
-  {#each gigs as gig}
+  <div class="gigs flex">
+    {#each gigs as gig}
       <Gig {gig} />
     {:else}
       No upcoming gigs.
-  {/each}
+    {/each}
+  </div>
 {/if}
 
 <style>
@@ -62,6 +64,7 @@ onMount(function() {
 }
 .profile_image {
   float: left;
+  height: 100px;
   margin-right: 30px;
 }
 </style>

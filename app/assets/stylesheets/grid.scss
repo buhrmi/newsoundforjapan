@@ -1,0 +1,64 @@
+$margin: 16px;
+
+.container {
+  margin: 0 20px;
+  position: relative;
+  width: calc(100% - 40px);
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 (-$margin/2);
+  justify-content: space-between;
+}
+.flex.reverse {
+  flex-wrap: wrap-reverse;
+}
+.flex > * {
+  width: calc(100% - #{$margin});
+  margin: 0 $margin/2 $margin;
+}
+.flex img {
+  width: 100%;
+}
+
+@for $i from 1 through 12 {
+  .item-#{$i} {
+    width: calc(100% / 12 * #{$i} - #{$margin});  
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+    margin: 0 auto;
+  }
+  .md\:hidden {
+    display: none;
+  }
+  .md\:visible {
+    display: inline-block;
+  }
+  @for $i from 1 through 12 {
+    .md\:item-#{$i} {
+      width: calc(100% / 12 * #{$i} - #{$margin});  
+    }
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 1004px;
+  }
+  @for $i from 1 through 12 {
+    .lg\:item-#{$i} {
+      width: calc(100% / 12 * #{$i} - #{$margin});  
+    }
+  }
+}
