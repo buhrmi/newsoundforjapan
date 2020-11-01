@@ -71,7 +71,7 @@ class User < ApplicationRecord
     cals = Icalendar::Calendar.parse(ics)
     cal = cals.first
 
-    maybe_deleted_external_ids = gigs.pluck :external_id    
+    maybe_deleted_external_ids = gigs.pluck(:external_id).compact    
     
     for cal_event in cal.events
       start_at = cal_event.dtstart.to_time
