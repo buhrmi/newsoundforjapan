@@ -21,7 +21,7 @@
 
   <footer>
     All times are in JST (Asia/Tokyo)<br><br>
-    Copyright © 2020 NEW SOUND FOR JAPAN K.K., All Rights Reserved | <a use:inertia href="/privacy_policy">Privacy Policy</a>
+    Copyright © 2020 NEW SOUND FOR JAPAN K.K., All Rights Reserved | <a use:inertia href="/covid19">Measures regarding Covid 19</a> | <a use:inertia href="/privacy_policy">Privacy Policy</a>
     
   </footer>
 </div>
