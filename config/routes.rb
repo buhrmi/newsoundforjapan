@@ -3,10 +3,11 @@ Rails.application.routes.draw do
     resources :places
     resources :gigs
     resources :users
-
+    resources :events
     root to: "users#index"
   end
   
+  resources :events
   resources :places
   resources :gigs
   resource :session
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
    
     get '/(:slug)', to: 'slugs#show'
-    get '/talents/(:name)', to: 'users#show'
+    get '/talents/(:id)', to: 'users#show'
   end
   resources :users
   

@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class GigDashboard < Administrate::BaseDashboard
+class EventDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,18 +8,13 @@ class GigDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    talent: Field::BelongsTo.with_options(class_name: "User"),
     place: Field::BelongsTo,
+    gigs: Field::HasMany,
     id: Field::Number,
-    external_id: Field::String,
-    summary: Field::String,
-    event_id: Field::Number,
-    talent_id: Field::Number,
     start_at: Field::DateTime,
-    end_at: Field::DateTime,
-    featured: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    name: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,41 +23,32 @@ class GigDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  talent
   place
+  gigs
   id
-  external_id
+  start_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  talent
   place
+  gigs
   id
-  external_id
-  summary
-  event_id
-  talent_id
   start_at
-  end_at
-  featured
   created_at
   updated_at
+  name
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  talent
   place
-  external_id
-  summary
-  event_id
+  gigs
   start_at
-  end_at
-  featured
+  name
   ].freeze
 
   # COLLECTION_FILTERS
@@ -77,10 +63,10 @@ class GigDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how gigs are displayed
+  # Overwrite this method to customize how events are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(gig)
-  #   "Gig ##{gig.id}"
+  # def display_resource(event)
+  #   "Event ##{event.id}"
   # end
 end

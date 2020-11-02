@@ -71,14 +71,16 @@ class User < ApplicationRecord
     cals = Icalendar::Calendar.parse(ics)
     cal = cals.first
 
-    maybe_deleted_external_ids = gigs.pluck(:external_id).compact    
+    # We keep all future externally imported gigs in a list, so we can delete them if they
+    # are no longer on the calendar
+    maybe_deleted_external_ids = gigs.where('start_at > ?', Time.now).pluck(:external_id).compact    
     
     for cal_event in cal.events
       start_at = cal_event.dtstart.to_time
       next if start_at < Time.now
-      gig = Gig.where(external_id: cal_event.uid.to_s).first_or_create
-      gig.place = Place.from_event_location(cal_event.location)
-      gig.summary =  cal_event.summary
+      gig = Gig.where(external_id: cal_event.uid.to_s).first_or_initialize
+      place = Place.from_event_location(cal_event.location)
+      gig.event ||=  Event.where(place: place).where('start_at > ? and start_at < ?', start_at - 12.hours, start_at + 12.hours).first_or_create(start_at: start_at, name: cal_event.summary)
       gig.talent_id = self.id
       gig.start_at = start_at
       gig.end_at = cal_event.dtend.to_time

@@ -1,21 +1,27 @@
 class Gig < ApplicationRecord
   belongs_to :talent, class_name: 'User'
+  belongs_to :event
 
-  belongs_to :place, optional: true
-  scope :on_that_day, lambda { |time| where('start_at > ? and start_at < ?', time - 12.hours, time + 12.hours) }  
+  validates_uniqueness_of :talent, scope: 'event_id'
+
+  before_save :ensure_start_time_is_set
+
   def self.create_from_calendar_event! calendar_event
     gig = Gig.where(external_id: calendar_event.id).first_or_create(
       
     )
   end
 
+
+  def ensure_start_time_is_set
+    self.start_at ||= event.start_at
+  end
+
   def to_prop
     {
       id: id,
       start_at: start_at,
-      summary: summary,
-      talent: talent.to_prop,
-      place: place.to_prop
-    }
+      event: event.to_prop,
+      talent: talent.to_prop    }
   end
 end
