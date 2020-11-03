@@ -73,7 +73,7 @@ class User < ApplicationRecord
 
     # We keep all future externally imported gigs in a list, so we can delete them if they
     # are no longer on the calendar
-    maybe_deleted_external_ids = gigs.where('start_at > ?', Time.now).pluck(:external_id).compact    
+    maybe_deleted_external_ids = gigs.where('start_at > ?', Time.now).pluck(:external_id).reject { |id| id.empty?}    
     
     for cal_event in cal.events
       start_at = cal_event.dtstart.to_time
