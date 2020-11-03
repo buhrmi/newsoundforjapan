@@ -9,12 +9,10 @@ class GigDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     talent: Field::BelongsTo.with_options(class_name: "User"),
-    place: Field::BelongsTo,
+    event: Field::BelongsTo,
     id: Field::Number,
     external_id: Field::String,
     summary: Field::String,
-    event_id: Field::Number,
-    talent_id: Field::Number,
     start_at: Field::DateTime,
     end_at: Field::DateTime,
     featured: Field::Boolean,
@@ -29,7 +27,6 @@ class GigDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   talent
-  place
   id
   external_id
   ].freeze
@@ -38,12 +35,10 @@ class GigDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   talent
-  place
+  event
   id
   external_id
   summary
-  event_id
-  talent_id
   start_at
   end_at
   featured
@@ -56,10 +51,9 @@ class GigDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   talent
-  place
   external_id
   summary
-  event_id
+  event
   start_at
   end_at
   featured
