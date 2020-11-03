@@ -12,7 +12,7 @@
 <p><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</p>
 </li>
 <li>
-<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to New Sound For Japan K.K., 12F Fuji Soft Akihabara Bldg., 3 Kanda Neribei-cho, Chiyoda-ku, Tokyo.</p>
+<p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to STEFAN K.K., 12F Fuji Soft Akihabara Bldg., 3 Kanda Neribei-cho, Chiyoda-ku, Tokyo.</p>
 </li>
 <li>
 <p><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</p>
