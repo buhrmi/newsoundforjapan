@@ -27,12 +27,13 @@ export let past
 </div>
 
 <h1>Past</h1>
-
-{#each past as gig}
-  <Gig {gig} />
-{:else}
-  Nothing in the past.
-{/each}
+<div class="gigs flex">
+  {#each past as gig}
+    <Gig {gig} />
+  {:else}
+    Nothing in the past.
+  {/each}
+</div>
 
 <style>
 .gigs {
