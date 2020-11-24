@@ -1,6 +1,6 @@
 class GigsController < ApplicationController
   def create
-    return redirect_to '/auth/twitter' unless current_user
+    return inertia_redirect_to '/auth/twitter' unless current_user
     gig = Gig.create(create_params.merge talent: current_user)
     redirect_to event_url(gig.event)
   end

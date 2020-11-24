@@ -21,7 +21,7 @@ gem 'webpacker', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'inertia_rails'
+gem 'inertia_rails', '1.6.0'
 gem "administrate"
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -33,9 +33,6 @@ gem 'google-api-client'
 # google-api-client does not include places support. use another gem for that
 gem 'google_places'
 gem 'icalendar'
-# This is used to compile character functions (eg regeneration time etc) to javascript and make them
-# available client-side
-#gem 'ruby2js'
 
 #gem "discordrb"
 gem "aws-sdk-s3", require: false

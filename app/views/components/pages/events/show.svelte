@@ -27,7 +27,7 @@ export let current_user_gig
       </span> 
     </a>
   {:else}
-    <a href="/auth/twitter" class="btn-big">
+    <a href="/auth/twitter?return_to={encodeURIComponent(window.location)}" class="btn-big">
       <span class="sc-text">
         Reserve DJ slot
       </span> 

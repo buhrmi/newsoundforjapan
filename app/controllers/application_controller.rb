@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   before_action :set_locale
-
+  before_action :handle_return_to
+  
   rescue_from ActiveRecord::RecordInvalid do |e|
     flash[:errors] = e.record.errors
     redirect_back fallback_location: root_url
@@ -14,6 +15,14 @@ class ApplicationController < ActionController::Base
       flash: flash.to_hash,
       layout: 'layout'
     }
+  end
+
+  def handle_return_to
+    if cookies[:return_to]
+      url = cookies.delete :return_to
+      return redirect_to url
+    end
+    cookies[:return_to] = params[:return_to] if params[:return_to]
   end
 
   def set_locale
