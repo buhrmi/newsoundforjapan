@@ -5,15 +5,7 @@ export let past
 </script>
 
 
-<div class="splash">
-  <h2>Welcome to the new era of rave parties</h2>
-  <p>
-    All New Sound For Japan events feature open DJ booths. We provide the equipment, you provide the vibes.<br>
-    With the click of a button, you can add yourself to the lineup.
-  </p>
-</div>
-
-<h1>Coming up</h1>
+<h2>Coming up</h2>
 
 <div class="gigs flex">
   {#each upcoming as gig}
@@ -26,7 +18,7 @@ export let past
   </div>
 </div>
 
-<h1>Past</h1>
+<h2>Past</h2>
 <div class="gigs flex">
   {#each past as gig}
     <Gig {gig} />
@@ -45,8 +37,5 @@ export let past
   height: 100%;
   color: #888;
   border: 3px dashed rgba(0,0,0,0.3);
-}
-.splash {
-  margin: 40px 0;
 }
 </style>

@@ -43,6 +43,8 @@ onMount(function() {
   <div class="soundcloud">
     {#if user.soundcloud_playlist_id}
       <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/{user.soundcloud_playlist_id}&color=%23bf25b6&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    {:else}
+      We currently don't have a playlist for this user.  
     {/if}
     </div>
   <div id="twitch"><div id="embed"></div></div>

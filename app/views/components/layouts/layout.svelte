@@ -16,12 +16,19 @@
     {/if}
   </header>
   
+  <div class="splash">
+    <p>
+      All our events feature an open DJ booth. We provide the equipment, you provide the vibes.<br>
+      To reserve a DJ timeslot, all you have to do is log in with Twitter and click on the "Reserve DJ slot" button.
+    </p>
+  </div>
+  
 
   <slot />
 
   <footer>
     All times are in JST (Asia/Tokyo)<br><br>
-    Copyright © 2020 STEFAN K.K., All Rights Reserved | <a use:inertia href="/covid19">Measures regarding Covid 19</a> | <a use:inertia href="/privacy_policy">Privacy Policy</a>
+    Copyright © 2020 STEFAN K.K., All Rights Reserved | <a use:inertia href="/covid19">COVID-19 Information</a> | <a use:inertia href="/privacy_policy">Privacy Policy</a>
     
   </footer>
 </div>
