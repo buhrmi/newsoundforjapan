@@ -17,13 +17,14 @@
         <meta name="twitter:description" content="<%= @title_object.description %>">
         <meta property="og:description" content="<%= @title_object.description %>">
       <% end %>
-      <% if @title_object.respond_to? :profile_image %>
-        <meta name="twitter:image" content="https://newsoundforjapan.com<%= @title_object.profile_image_thumbnail %>">
-        <meta property="og:image" content="https://newsoundforjapan.com<%= @title_object.profile_image_thumbnail %>">
-      <% end %>
     <% else %>
       <title>New Sound For Japan</title>
       <meta name="twitter:title" content="New Sound For Japan">
+    <% end %>
+    <% if @title_object && @title_object.respond_to?(:profile_image_thumbnail) && @title_object.profile_image_thumbnail %>
+      <meta name="twitter:image" content="https://newsoundforjapan.com<%= @title_object.profile_image_thumbnail %>">
+      <meta property="og:image" content="https://newsoundforjapan.com<%= @title_object.profile_image_thumbnail %>">
+    <% else %>
       <meta name="twitter:image" content="<%= asset_url 'share_call' %>">
       <meta property="og:image" content="<%= asset_url 'share_call' %>">
     <% end %>
