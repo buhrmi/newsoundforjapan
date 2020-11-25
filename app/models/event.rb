@@ -4,11 +4,11 @@ class Event < ApplicationRecord
   has_many :talents, through: :gigs
 
   def description
-    talents.first(5).pluck(:display_name).join(', ') + ' @ ' + place.name
+    I18n.l(start_at, format: :short) + ": " +  talents.first(5).pluck(:display_name).join(', ') + ' and more @ ' + place.name
   end
 
   def display_name
-    "CALL FOR DJs | " + I18n.l(start_at, format: :short) + ": " + name
+    "CALL FOR DJs | " + name
   end
 
   def to_prop
