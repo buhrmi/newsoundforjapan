@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   end
 
   def display_name
-    "CALL FOR DJs | " + name
+    "CALL FOR DJs | " + I18n.l(start_at, format: :short) + ": " + name
   end
 
   def to_prop
