@@ -10,6 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    soundcloud_playlist_id: Field::Number,
     display_name: Field::String,
     description: Field::String,
     gigs: Field::HasMany,
@@ -27,6 +28,7 @@ class UserDashboard < Administrate::BaseDashboard
   id
   name
   display_name
+  soundcloud_playlist_id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,6 +38,7 @@ class UserDashboard < Administrate::BaseDashboard
   name
   display_name
   gigs
+  soundcloud_playlist_id
   description
   ics_url
   created_at
@@ -49,6 +52,7 @@ class UserDashboard < Administrate::BaseDashboard
   name
   display_name
   description
+  soundcloud_playlist_id
   ics_url
   ].freeze
 

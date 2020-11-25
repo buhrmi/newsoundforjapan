@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" href="<%= image_url 'favicon.png' %>">
 
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <%# <script src="https://embed.twitch.tv/embed/v1.js"></script> %>
 
     <% if @title_object %>
       <title><%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan</title>

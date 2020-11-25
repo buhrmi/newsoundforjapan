@@ -21,7 +21,7 @@ gem 'webpacker', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'inertia_rails', '1.6.0'
+gem 'inertia_rails'
 gem "administrate"
 gem 'omniauth'
 gem 'omniauth-twitter'

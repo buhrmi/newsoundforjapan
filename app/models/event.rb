@@ -7,6 +7,10 @@ class Event < ApplicationRecord
     talents.first(5).pluck(:name).join(', ') + ' @ ' + place.name
   end
 
+  def display_name
+    "CALL FOR DJs | " + name
+  end
+
   def to_prop
     {
       id: id,

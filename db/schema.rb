@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_082348) do
+ActiveRecord::Schema.define(version: 2020_11_25_005229) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -81,8 +81,10 @@ ActiveRecord::Schema.define(version: 2020_11_02_082348) do
     t.string "display_name"
     t.string "description"
     t.boolean "admin"
-    t.bigint "twitter_id"
+    t.integer "twitter_id"
     t.string "twitter_name"
+    t.string "soundcloud_name"
+    t.string "soundcloud_playlist_id"
     t.index ["twitch_id"], name: "index_users_on_twitch_id"
     t.index ["twitter_id"], name: "index_users_on_twitter_id"
     t.index ["twitter_name"], name: "index_users_on_twitter_name"

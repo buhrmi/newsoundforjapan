@@ -13,7 +13,7 @@ export let current_user_gig
 <h2>LINEUP</h2>
 
 {#each gigs as gig}
-  <a use:inertia href="/talents/{gig.talent.id}">{gig.talent.display_name}</a>
+  <a use:inertia href="/talents/{gig.talent.id}">{gig.talent.display_name}</a><br>
 {/each}
 
 {#if !current_user_gig}

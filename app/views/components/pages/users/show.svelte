@@ -12,13 +12,7 @@ function saveICS() {
 }
 
 onMount(function() {
-  new Twitch.Embed("embed", {
-    width: '100%',
-    height: '100%',
-    channel: user.name,
-    // only needed if your site is also embedded on embed.example.com and othersite.example.com 
-    parent: ["newsoundforjapan.com", "localhost"]
-  });
+
 })
 
 </script>
@@ -35,8 +29,7 @@ onMount(function() {
     <h2>{user.display_name}</h2>
     <p>{user.description}</p>
   </div>
-  <div id="twitch"><div id="embed"></div></div>
-  <h3>Upcoming Shows</h3>
+  <h2>Upcoming Gigs</h2>
 
   <div class="gigs flex">
     {#each gigs as gig}
@@ -45,19 +38,19 @@ onMount(function() {
       No upcoming gigs.
     {/each}
   </div>
+
+  <h2>Listen</h2>
+  <div class="soundcloud">
+    {#if user.soundcloud_playlist_id}
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/{user.soundcloud_playlist_id}&color=%23bf25b6&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    {/if}
+    </div>
+  <div id="twitch"><div id="embed"></div></div>
+
+  
 {/if}
 
 <style>
-#twitch {
-  width: 100%;
-  padding-bottom: 44%;
-  position: relative;
-}
-#embed {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 .user_header {
   padding: 30px 0;
   height: 150px;

@@ -53,12 +53,11 @@ class User < ApplicationRecord
       user.profile_image.attach(io: image, filename: "avatar.jpg")
     end
     
-    user.update!(
-      name: auth_hash['info']['name'],
-      email: auth_hash['info']['email'],
-      display_name: auth_hash['info']['nickname'],
-      description: auth_hash['info']['description']
-    )
+    user.name ||= auth_hash['info']['name']
+    user.email = auth_hash['info']['email']
+    user.display_name ||= auth_hash['info']['nickname']
+    user.description ||= auth_hash['info']['description']
+    user.save
     user
   end
 
@@ -116,6 +115,7 @@ class User < ApplicationRecord
     prop = {
       id: id,
       name: name,
+      soundcloud_playlist_id: soundcloud_playlist_id,
       display_name: display_name,
       description: description,
       profile_image: profile_image_thumbnail,

@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      head 403 unless current_user.admin?
+      head 403 unless Rails.env.development? || current_user.admin?
     end
 
     def current_user
