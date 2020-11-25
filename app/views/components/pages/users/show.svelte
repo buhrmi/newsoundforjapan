@@ -35,7 +35,10 @@ onMount(function() {
     {#each gigs as gig}
       <Gig {gig} />
     {:else}
+    <div class="gig">
       No upcoming gigs.
+
+    </div>
     {/each}
   </div>
 

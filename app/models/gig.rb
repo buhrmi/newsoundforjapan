@@ -6,6 +6,8 @@ class Gig < ApplicationRecord
 
   before_save :ensure_start_time_is_set
 
+  scope :upcoming, lambda { where 'start_at > ?', Time.now}
+
   def self.create_from_calendar_event! calendar_event
     gig = Gig.where(external_id: calendar_event.id).first_or_create(
       
