@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :talents, through: :gigs
 
   def description
-    talents.first(5).pluck(:name).join(', ') + ' @ ' + place.name
+    talents.first(5).pluck(:display_name).join(', ') + ' @ ' + place.name
   end
 
   def display_name
