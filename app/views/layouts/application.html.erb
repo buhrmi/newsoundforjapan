@@ -10,9 +10,9 @@
     <%# <script src="https://embed.twitch.tv/embed/v1.js"></script> %>
 
     <% if @title_object %>
-      <title><%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan</title>
-      <meta name="twitter:title" content="<%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan" />
-      <meta property="og:title" content="<%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %> | New Sound For Japan" />
+      <title><%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %></title>
+      <meta name="twitter:title" content="<%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %>" />
+      <meta property="og:title" content="<%= @title_object.respond_to?(:display_name) ? @title_object.display_name : @title_object.name %>" />
       <% if @title_object.respond_to? :description %>
         <meta name="twitter:description" content="<%= @title_object.description %>">
         <meta property="og:description" content="<%= @title_object.description %>">
@@ -25,8 +25,8 @@
       <meta name="twitter:image" content="https://newsoundforjapan.com<%= @title_object.profile_image_thumbnail %>">
       <meta property="og:image" content="https://newsoundforjapan.com<%= @title_object.profile_image_thumbnail %>">
     <% else %>
-      <meta name="twitter:image" content="<%= asset_url 'share_call' %>">
-      <meta property="og:image" content="<%= asset_url 'share_call' %>">
+      <meta name="twitter:image" content="<%= asset_url 'share_call.jpg' %>">
+      <meta property="og:image" content="<%= asset_url 'share_call.jpg' %>">
     <% end %>
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="@newsoundforjpn">
