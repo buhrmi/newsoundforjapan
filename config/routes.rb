@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :gigs
     resources :users
     resources :events
+    namespace :ahoy do
+      resources :visits
+    end
     root to: "users#index"
   end
   

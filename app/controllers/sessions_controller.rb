@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     end
     cookies.signed[:user_id] = user.id
     
+    ahoy.authenticate(user)  
     redirect_to current_user
     
   end
