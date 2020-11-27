@@ -1,5 +1,6 @@
 <script>
 import { inertia, page } from 'inertia-svelte'
+import Gig from 'components/gig.svelte'
 import formatTime from 'format_time'
 export let event
 export let gigs
@@ -12,9 +13,11 @@ export let current_user_gig
 
 <h2>LINEUP</h2>
 
-{#each gigs as gig}
-  <a use:inertia href="/talents/{gig.talent.id}">{gig.talent.display_name}</a><br>
-{/each}
+<div class="gigs flex">
+  {#each gigs as gig}
+    <Gig {gig} />
+  {/each}
+</div> 
 
 {#if !current_user_gig}
 <div class="join">
