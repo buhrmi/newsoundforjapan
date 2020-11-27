@@ -37,6 +37,7 @@ gem 'icalendar'
 #gem "discordrb"
 gem "aws-sdk-s3", require: false
 gem "ahoy_matey"
+gem "httparty"
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'

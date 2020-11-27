@@ -359,6 +359,7 @@ DEPENDENCIES
   dotenv-rails
   google-api-client
   google_places
+  httparty
   icalendar
   image_processing (~> 1.2)
   inertia_rails

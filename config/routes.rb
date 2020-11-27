@@ -14,15 +14,15 @@ Rails.application.routes.draw do
   resources :places
   resources :gigs
   resource :session
+  resources :users
   
   get '/auth/:provider/callback', to: 'sessions#create'
   
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-   
-    get '/(:slug)', to: 'slugs#show'
     get '/talents/(:id)', to: 'users#show'
   end
-  resources :users
+  
+  get '/:twitter_name', to: 'users#show'
   
   root to: 'gigs#index'
 end

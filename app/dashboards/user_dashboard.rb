@@ -13,6 +13,8 @@ class UserDashboard < Administrate::BaseDashboard
     soundcloud_playlist_id: Field::Number,
     display_name: Field::String,
     description: Field::String,
+    twitter_name: Field::String,
+    twitter_id: Field::Number,
     gigs: Field::HasMany,
     ics_url: Field::String,
     created_at: Field::DateTime,
@@ -27,6 +29,7 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   name
+  twitter_name
   display_name
   soundcloud_playlist_id
   ].freeze
@@ -36,6 +39,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   name
+  twitter_name
   display_name
   gigs
   soundcloud_playlist_id
@@ -50,6 +54,8 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   name
+  twitter_name
+  twitter_id
   display_name
   description
   soundcloud_playlist_id

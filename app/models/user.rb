@@ -44,6 +44,30 @@ class User < ApplicationRecord
     user
   end
 
+  def self.from_twitter_name twitter_name, update_if_exists = false
+    user = User.where(twitter_name: twitter_name).first
+
+    if !user || update_if_exists
+      uri = "https://api.twitter.com/2/users/by/username/#{twitter_name}?user.fields=profile_image_url,description"
+      auth = 'Bearer '+ENV['TWITTER_BEARER_TOKEN']
+      res = HTTParty.get(uri, headers: {Authorization: auth}).parsed_response
+      id = res['data']['id']
+      user = User.where(twitter_id: id).first_or_create
+      user.name = user.display_name = res['data']['name']
+      user.twitter_name = res['data']['username']
+      user.description = res['data']['description']
+      if uri = res['data']['profile_image_url']
+        uri.gsub!('_normal', '')
+        image = open uri
+        user.profile_image.attach(io: image, filename: uri.split('/').last)
+      end
+      
+      user.save
+    end
+
+    user
+  end
+
   def self.from_twitch auth_hash
     
     user = User.where(twitch_id: auth_hash[:uid]).first_or_create
