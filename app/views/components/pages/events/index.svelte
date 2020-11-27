@@ -23,8 +23,8 @@
 
   {#each past as event}
     <h2>
-      <span class="time">{formatTime(event.start_at)}</span><br>
-      {event.name}
+      <a use:inertia href="/events/{event.id}">{event.name}</a><br>
+      <span class="time">{formatTime(event.start_at)}</span>
     </h2>
     <div class="gigs flex">
       {#each event.gigs as gig}
