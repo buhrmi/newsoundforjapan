@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    soundcloud_playlist_id: Field::Number,
+    soundcloud_playlist_id: Field::String,
     display_name: Field::String,
     description: Field::String,
     twitter_name: Field::String,
