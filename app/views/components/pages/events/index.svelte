@@ -1,6 +1,7 @@
 <script>
   import Gig from 'components/gig.svelte'
   import formatTime from 'format_time'
+  import { inertia } from 'inertia-svelte'
   export let upcoming
   export let past
   </script>
@@ -8,7 +9,7 @@
   <h1>Coming up</h1>
   {#each upcoming as event}
     <h2>
-      {event.name}<br>
+      <a use:inertia href="/events/{event.id}">{event.name}</a><br>
       <span class="time">{formatTime(event.start_at)} @ {event.place.name}</span>
     </h2>
     <div class="gigs flex">

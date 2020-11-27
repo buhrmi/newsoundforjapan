@@ -51,6 +51,7 @@ class User < ApplicationRecord
       uri = "https://api.twitter.com/2/users/by/username/#{twitter_name}?user.fields=profile_image_url,description"
       auth = 'Bearer '+ENV['TWITTER_BEARER_TOKEN']
       res = HTTParty.get(uri, headers: {Authorization: auth}).parsed_response
+      raise ActiveRecord::RecordNotFound unless res['data']
       id = res['data']['id']
       user = User.where(twitter_id: id).first_or_create
       user.name = user.display_name = res['data']['name']

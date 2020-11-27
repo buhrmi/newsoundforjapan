@@ -5,7 +5,7 @@ export let gig
 </script>
 
 <div class="gig item-6 md:item-4">
-  <a use:inertia href="/events/{gig.event.id}?talent={gig.talent.id}">
+  <a use:inertia href="/{gig.talent.twitter_name}">
     <!--div class="time">
       {formatTime(gig.start_at)}
     </div-->
