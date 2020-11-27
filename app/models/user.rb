@@ -143,6 +143,7 @@ class User < ApplicationRecord
       display_name: display_name,
       description: description,
       profile_image: profile_image_thumbnail,
+      last_logged_in_at: last_logged_in_at,
       url: Rails.application.routes.url_helpers.user_url(self, only_path: true)
     }
     if incl_private
