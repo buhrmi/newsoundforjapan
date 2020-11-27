@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :gigs
   resource :session
   resources :users
-  
+
   get '/auth/:provider/callback', to: 'sessions#create'
   
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do

@@ -68,6 +68,24 @@ class User < ApplicationRecord
     user
   end
 
+  def update_from_twitter
+    uri = "https://api.twitter.com/2/users/#{twitter_id}?user.fields=profile_image_url,description"
+    auth = 'Bearer '+ENV['TWITTER_BEARER_TOKEN']
+    res = HTTParty.get(uri, headers: {Authorization: auth}).parsed_response
+    puts res.inspect
+    puts uri
+    self.name = self.display_name = res['data']['name']
+    self.twitter_name = res['data']['username']
+    self.description = res['data']['description']
+    if uri = res['data']['profile_image_url']
+      uri.gsub!('_normal', '')
+      image = open uri
+      self.profile_image.attach(io: image, filename: uri.split('/').last)
+    end
+    
+    self.save
+  end
+
   def self.from_twitch auth_hash
     
     user = User.where(twitch_id: auth_hash[:uid]).first_or_create
@@ -87,7 +105,7 @@ class User < ApplicationRecord
 
 
 
-  def sync_gigs_with_ics!
+  def pull_gigs_from_ics!
     return unless ics_url
     ics = open ics_url
     
@@ -144,6 +162,7 @@ class User < ApplicationRecord
       description: description,
       profile_image: profile_image_thumbnail,
       last_logged_in_at: last_logged_in_at,
+      twitter_name: twitter_name,
       url: Rails.application.routes.url_helpers.user_url(self, only_path: true)
     }
     if incl_private

@@ -20,8 +20,13 @@ onMount(function() {
 
 <div class="user_header">
   <img class="profile_image" src={user.profile_image} alt={user.display_name}>
-  <h1>{user.display_name}</h1>
-  <p>{user.description}</p>
+  <h1>
+    {user.display_name}
+    <a target="_blank" href="https://twitter.com/{user.twitter_name}">Show on Twitter</a>
+  </h1>
+  <p>
+    {user.description}<br>
+  </p>
 </div>
 <h2>Upcoming Gigs</h2>
 
@@ -75,5 +80,8 @@ h1 {
   float: left;
   height: 120px;
   margin-right: 30px;
+}
+h1 a {
+  font-size: 0.5em;
 }
 </style>

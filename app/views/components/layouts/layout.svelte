@@ -10,7 +10,7 @@
     </a>
     {#if $currentUser}
       <div class="logout">
-        Welcome, {$currentUser.name}
+        Welcome, {$currentUser.name} <a use:inertia href="/users/me/edit">Edit Profile</a><br>
         <a use:inertia={{method: 'DELETE'}} href="/session">Log out</a>
       </div>
     {/if}

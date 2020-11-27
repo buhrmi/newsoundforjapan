@@ -4,6 +4,8 @@ class UsersController < ApplicationController
       @title_object = user = User.from_twitter_name(params[:twitter_name])
     elsif params[:name]
       @title_object = user = User.find_by_name!(params[:name])
+    elsif params[:id] == 'me'
+      @title_object = user = current_user
     elsif params[:id]
       @title_object = user = User.find(params[:id])  
     else
@@ -16,12 +18,17 @@ class UsersController < ApplicationController
     }
   end
 
+  def edit
+    head 403 unless current_user
+
+    render inertia: 'users/edit', props: {
+      
+    }
+  end
+
   def update
-    user = User.find(params[:id])
-    head 403 unless user == current_user
-    user.ics_url = params[:user][:ics_url]
-    user.save
-    redirect_to user
+    current_user.update_from_twitter
+    redirect_to current_user
   end
 
   def new

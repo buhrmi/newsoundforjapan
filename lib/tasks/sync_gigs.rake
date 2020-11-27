@@ -4,5 +4,5 @@
 
 desc 'Sync all gigs with the users linked .ics file'
 task sync_gigs: :environment do
-  User.all.map &:sync_gigs_with_ics!
+  User.all.map &:pull_gigs_from_ics!
 end
