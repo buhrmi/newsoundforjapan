@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   
   get '/:twitter_name', to: 'users#show'
   
-  root to: 'gigs#index'
+  root to: 'events#index'
 end

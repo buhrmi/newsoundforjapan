@@ -6,9 +6,9 @@ export let gig
 
 <div class="gig item-6 md:item-4">
   <a use:inertia href="/events/{gig.event.id}?talent={gig.talent.id}">
-    <div class="time">
+    <!--div class="time">
       {formatTime(gig.start_at)}
-    </div>
+    </div-->
     <div class="talent_profile_image">
       <img src={gig.talent.profile_image}>
     </div>
@@ -16,8 +16,8 @@ export let gig
       <div class="name">
         {gig.talent.display_name}
       </div>
-      <div class="place">
-        @ {gig.event.place.name}
+      <div class="event">
+        {gig.event.name}
       </div>
       {#if gig.summary}
         <div class="summary">

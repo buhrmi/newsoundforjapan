@@ -8,4 +8,14 @@ class EventsController < ApplicationController
       current_user_gig: current_user_gig
     }
   end
+
+  def index
+    upcoming = Event.upcoming.order('start_at ASC')
+    past = Event.past.order('start_at DESC')
+
+    render inertia: 'events/index', props: {
+      upcoming: upcoming.map { |e| e.to_prop(true) },
+      past: past.map { |e| e.to_prop(true) }
+    }
+  end
 end
