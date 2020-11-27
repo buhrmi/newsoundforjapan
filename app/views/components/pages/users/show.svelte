@@ -1,9 +1,10 @@
 <script>
 import Gig from 'components/gig.svelte'
 import { Inertia } from '@inertiajs/inertia'
-import { page } from 'inertia-svelte'
+import { page, inertia } from 'inertia-svelte'
 import { stringify } from 'querystring'
 import { onMount } from 'svelte'
+import formatTime from 'format_time'
 export let user
 export let gigs
 
@@ -28,17 +29,19 @@ onMount(function() {
     {user.description}<br>
   </p>
 </div>
+
 <h2>Upcoming Gigs</h2>
 
-<div class="gigs flex">
   {#each gigs as gig}
-    <Gig {gig} />
+    <div class="gig">
+    {formatTime(gig.start_at)}<br>
+    <strong><a use:inertia href="/events/{gig.event.id}">{gig.event.name}</a></strong>
+  </div>
   {:else}
   <div class="gig">
     No upcoming gigs listed.
   </div>
   {/each}
-</div>
 
 <h2>Listen</h2>
 <div class="soundcloud">
@@ -80,6 +83,9 @@ h1 {
   float: left;
   height: 120px;
   margin-right: 30px;
+}
+strong {
+  font-size: 1.5em;
 }
 h1 a {
   font-size: 0.5em;
