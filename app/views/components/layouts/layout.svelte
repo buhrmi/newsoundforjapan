@@ -28,7 +28,7 @@
 
   <footer>
     All times are in JST (Asia/Tokyo)<br><br>
-    Copyright © 2020 STEFAN K.K., All Rights Reserved | <a use:inertia href="/covid19">COVID-19 Information</a> | <a use:inertia href="/privacy_policy">Privacy Policy</a>
+    Copyright © 2020 STEFAN K.K., All Rights Reserved | <a use:inertia href="/pages/covid19">COVID-19 Information</a> | <a use:inertia href="/pages/privacy_policy">Privacy Policy</a>
     
   </footer>
 </div>

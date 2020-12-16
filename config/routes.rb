@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :gigs
   resource :session
   resources :users
+  resources :pages, controller: 'slugs'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   
